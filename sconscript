@@ -1,0 +1,24 @@
+import os
+from cgtscons import *
+
+# clone to avoid modifying parent enviroment
+Import("env",)
+env = env.Clone()
+
+#libAddCPecan(env)
+#libAddSonLib(env)
+
+##
+# cPecanLib
+##
+cpEnv = env.Clone()
+copyBuildInclude(cpEnv, globInclude(cpEnv, ["include"]))
+# buildStaticLibrary(cpEnv, CPECAN_LIB_NAME,
+#                    getSrcPaths("src",
+#                                ("multipleAligner.c", "pairwiseAligner.c", "stateMachine.c")))
+
+##
+# programs
+##
+#linkProg(cpEnv, "cPecanAlign", ("src/cPecanRealign.c",))
+#linkProg(cpEnv, "cPecanRealign", ("cPecanRealign.c",))
