@@ -11,14 +11,12 @@ libAddSonLib(env)
 ##
 # cPecanLib
 ##
-cpEnv = env.Clone()
-makeIncludesDepends(cpEnv, globInclude(cpEnv, [Dir("#/mods/cPecan/include")]))
-buildStaticLibrary(cpEnv, CPECAN_LIB_NAME,
+buildStaticLibrary(env, CPECAN_LIB_NAME,
                    getSrcPaths("src",
                                ("multipleAligner.c", "pairwiseAligner.c", "stateMachine.c")))
 
 ##
 # programs
 ##
-linkProg(cpEnv, "cPecanAlign", ("src/cPecanRealign.c",))
-linkProg(cpEnv, "cPecanRealign", ("src/cPecanRealign.c",))
+linkProg(env, "cPecanAlign", ("src/cPecanRealign.c",))
+linkProg(env, "cPecanRealign", ("src/cPecanRealign.c",))
