@@ -18,5 +18,5 @@ buildStaticLibrary(env, CPECAN_LIB_NAME,
 ##
 # programs
 ##
-linkProg(env, "cPecanAlign", ("src/cPecanRealign.c",))
-linkProg(env, "cPecanRealign", ("src/cPecanRealign.c",))
+linkProgDir(env, None, "src", ["cPecanRealign.c"])
+linkProgDir(env, None, "src", ["cPecanRealign.c"])
