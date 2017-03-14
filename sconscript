@@ -20,3 +20,4 @@ buildStaticLibrary(env, CPECAN_LIB_NAME,
 ##
 linkProgDir(env, None, "src", ["cPecanRealign.c"])
 linkProgDir(env, None, "src", ["cPecanRealign.c"])
+installPyProgs(env, "bin", ["cPecanEm.py", "cPecanModifyHmm.py"])
