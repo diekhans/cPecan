@@ -13,11 +13,11 @@ libAddSonLib(env)
 ##
 buildStaticLibrary(env, CPECAN_LIB_NAME,
                    getSrcPaths("src",
-                               ("multipleAligner.c", "pairwiseAligner.c", "stateMachine.c")))
+                               ["multipleAligner.c", "pairwiseAligner.c", "stateMachine.c"]))
 
 ##
 # programs
 ##
-linkProgDir(env, None, "src", ["cPecanRealign.c"])
-linkProgDir(env, None, "src", ["cPecanRealign.c"])
-installPyProgs(env, "bin", ["cPecanEm.py", "cPecanModifyHmm.py"])
+linkProg(env, None, ["src/cPecanAlign.c"])
+linkProg(env, None, ["src/cPecanRealign.c"])
+installPyProgs(env, getSrcPaths("bin", ["cPecanEm.py", "cPecanModifyHmm.py"]))
