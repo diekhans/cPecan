@@ -1,0 +1,9 @@
+*.o
+*.a
+*.dSYM/
+*.pyc
+.emacs.bak
+/build
+/mods
+.sconsign.dblite
+.emacs.bak
