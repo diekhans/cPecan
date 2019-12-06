@@ -9,11 +9,11 @@ cPecanDependencies =  ${basicLibsDependencies}
 cPecanLibs = ${basicLibs}
 
 all : ${libPath}/cPecanLib.a ${binPath}/cPecanLibTests ${binPath}/cPecanRealign ${binPath}/cPecanEm ${binPath}/cPecanModifyHmm ${binPath}/cPecanAlign
-	cd externalTools && make all
+	cd externalTools && ${MAKE} all
 
 clean : 
 	rm -f ${binPath}/cPecanRealign ${binPath}/cPecanEm ${binPath}/cPecanLibTests  ${libPath}/cPecanLib.a
-	cd externalTools && make clean
+	cd externalTools && ${MAKE} clean
 
 test : all
 	python allTests.py
