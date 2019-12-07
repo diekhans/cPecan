@@ -9,3 +9,4 @@ include  ${sonLibRootPath}/include.mk
 
 basicLibs = ${sonLibPath}/sonLib.a ${sonLibPath}/cuTest.a ${dblibs}
 basicLibsDependencies = ${sonLibPath}/sonLib.a ${sonLibPath}/cuTest.a 
+
