@@ -1112,7 +1112,9 @@ stList *filterToRemoveOverlap(stList *sortedOverlappingPairs) {
     //Traverse forwards to final set of pairs
     pX = INT64_MIN;
     pY = INT64_MIN;
+#ifndef NDEBUG
     int64_t pY2 = INT64_MIN;
+#endif
     for (int64_t i = 0; i < stList_length(sortedOverlappingPairs); i++) {
         stIntTuple *pair = stList_get(sortedOverlappingPairs, i);
         int64_t x = stIntTuple_get(pair, 0);
@@ -1120,12 +1122,14 @@ stList *filterToRemoveOverlap(stList *sortedOverlappingPairs) {
         if (x > pX && y > pY && stSortedSet_search(set, pair) != NULL) {
             stList_append(nonOverlappingPairs, stIntTuple_construct3(x, y, stIntTuple_get(pair, 2)));
         }
+#ifndef NDEBUG
         //Check things are sorted in the input
         assert(x >= pX);
         if (x == pX) {
             assert(y >= pY2);
         }
         pY2 = y;
+#endif
         pX = x > pX ? x : pX;
         pY = y > pY ? y : pY;
     }
@@ -1749,7 +1753,7 @@ stList *leftShiftAlignment(stList *alignedPairs, char *seqX, char *seqY) {
 	}
 
 	// Deal with boundary at beginning of alignment
-	while((x > 0 & y > 0) && toupper(seqX[x-1]) == toupper(seqY[y-1])) {
+	while(((x > 0) && (y > 0)) && (toupper(seqX[x-1]) == toupper(seqY[y-1]))) {
 		int64_t score = stList_length(alignedPairs) > 0 ? stIntTuple_get(stList_get(alignedPairs, 0), 0) : 1;
 		stList_append(leftShiftedAlignedPairs, stIntTuple_construct3(score, x-1, y-1));
 		x--; y--;

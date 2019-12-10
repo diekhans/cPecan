@@ -7,6 +7,7 @@ libTests = tests/*.c
 
 cPecanDependencies =  ${basicLibsDependencies}
 cPecanLibs = ${basicLibs}
+cflags += -Wno-overlength-strings
 
 all : ${libPath}/cPecanLib.a ${binPath}/cPecanLibTests ${binPath}/cPecanRealign ${binPath}/cPecanEm ${binPath}/cPecanModifyHmm ${binPath}/cPecanAlign
 	cd externalTools && ${MAKE} all
