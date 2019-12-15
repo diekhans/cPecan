@@ -84,11 +84,11 @@ class TestCase(unittest.TestCase):
                          optionsToRealign="--diagonalExpansion=6 --splitMatrixBiggerThanThis=100",
                          outputXMLModelFile=outputModelXMLFile,
                          blastScoringMatrixFile=outputBlastFile)
-            trialHmms = [ Hmm.loadHmm(outputModelFile + ("_%i" % i)) for i in xrange(trials) ]
+            trialHmms = [ Hmm.loadHmm(outputModelFile + ("_%i" % i)) for i in range(trials) ]
             hmm = Hmm.loadHmm(outputModelFile)
             node = ET.parse(outputModelXMLFile).getroot()
             logger.info("After multiple trials and iterations of EM the best likelihood found was %s, the likelihoods of the variants were: %s" % 
-                        (hmm.likelihood, " ".join(map(lambda x : str(x.likelihood), trialHmms))))
+                        (hmm.likelihood, " ".join([str(x.likelihood) for x in trialHmms])))
             
             matchProbs, gapOpen, gapExtend = makeBlastScoringMatrix(hmm, ("ACTG",))
             logger.info("Gap open: %s, Gap extend: %s, Match probs %s" % (gapOpen, gapExtend, " ".join(map(str, matchProbs))))
