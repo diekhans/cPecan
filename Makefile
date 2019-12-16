@@ -17,7 +17,7 @@ clean :
 	cd externalTools && ${MAKE} clean
 
 test : all
-	python allTests.py
+	${PYTHON} allTests.py
 
 ${binPath}/cPecanRealign : cPecanRealign.c ${libPath}/cPecanLib.a ${cPecanDependencies} 
 	${cxx} ${cflags} -I inc -I${libPath} -o ${binPath}/cPecanRealign cPecanRealign.c ${libPath}/cPecanLib.a ${cPecanLibs}
