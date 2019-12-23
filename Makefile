@@ -15,7 +15,10 @@ all : ${libPath}/cPecanLib.a ${binPath}/cPecanLibTests ${binPath}/cPecanRealign 
 clean : 
 	rm -f ${binPath}/cPecanRealign ${binPath}/cPecanEm ${binPath}/cPecanLibTests  ${libPath}/cPecanLib.a
 	cd externalTools && ${MAKE} clean
+	rm -rf tmp_*
 
+export PYTHONPATH = ../sonLib/src:..
+export PATH := ../sonLib/bin:${PATH}
 test : all
 	${PYTHON} allTests.py
 
